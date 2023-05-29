@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Country Names, Region, Sub-region and Population in REST Countries API</h1>
+    <script>
+        function myFunc(){
+        var xmlHTTP = new XMLHttpRequest();
+        xmlHTTP.open('GET','https://restcountries.com/v3.1/all',true);
+        xmlHTTP.send();
+
+        xmlHTTP.onreadystatechange = function(){
+            var json = JSON.parse(xmlHTTP.responseText);
+            console.log(json);
+            json.forEach((country)=>{
+                console.log(`The name of the country is ${country.name.common}`);
+                console.log(`The region of ${country.name.common} is ${country.region}`);
+                console.log(`The subregion of ${country.name.common} is ${country.subregion}`);
+                console.log(`The population of ${country.name.common} is ${country.population}`);
+            })
+        }
+    }
+    myFunc();
+    </script>
+</body>
+</html>
